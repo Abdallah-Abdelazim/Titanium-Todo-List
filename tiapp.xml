@@ -10,7 +10,7 @@
     </deployment-targets>
     <sdk-version>7.3.0.GA</sdk-version>
     <id>com.abdallah.titodolist</id>
-    <name>Todo List</name>
+    <name>Ti Todo List</name>
     <version>1.0</version>
     <publisher>Abdallah Abdelazim</publisher>
     <url>http://abdallah-abdelazim.github.io/</url>
