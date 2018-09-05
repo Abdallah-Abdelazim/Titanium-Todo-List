@@ -1,0 +1,14 @@
+".container": {
+	backgroundColor: "white"
+}
+
+"#addBtn": {
+	title:"+",
+	bottom:"8dp",
+	right:"8dp",
+	color:"white",
+	backgroundColor: "black",
+	width:"48dp",
+	height:"48dp",
+	borderRadius: "128dp"
+}
