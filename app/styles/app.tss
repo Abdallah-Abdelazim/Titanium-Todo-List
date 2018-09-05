@@ -1,3 +1,14 @@
+"TextField": {
+	color: Alloy.CFG.primaryTextColor,
+	hintTextColor: Alloy.CFG.grayColor
+}
+
+"Label": {
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	color: Alloy.CFG.primaryTextColor
+}
+
 ".container": {
 	backgroundColor: "white"
 }

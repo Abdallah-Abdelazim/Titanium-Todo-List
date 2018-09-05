@@ -11,9 +11,9 @@ todos.on("fetch", function() {
 		model = todos.at(i).attributes;
 		Ti.API.info(JSON.stringify(model));
 			if (!model['done']) {
-				todorows.push({title:model['item'],id:model['id']});
+				todorows.push({title:model['item'],id:model['id'], color:Alloy.CFG.primaryTextColor});
 			} else {
-				donerows.push({title:model['item'],id:model['id']});
+				donerows.push({title:model['item'],id:model['id'], color:Alloy.CFG.primaryTextColor});
 			}
 	}
 	Ti.App.fireEvent('app:update_list', {todos:todorows});

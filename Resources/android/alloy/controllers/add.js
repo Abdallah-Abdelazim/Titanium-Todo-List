@@ -39,7 +39,7 @@ function Controller() {
 
 	$.__views.addWin && $.addTopLevelView($.__views.addWin);
 	$.__views.itemField = Ti.UI.createTextField(
-	{ width: "90%", top: 55, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, returnKeyType: Ti.UI.RETURNKEY_DONE, id: "itemField", hintText: "What do you need to do?" });
+	{ color: Alloy.CFG.primaryTextColor, hintTextColor: Alloy.CFG.grayColor, width: "90%", top: 55, returnKeyType: Ti.UI.RETURNKEY_DONE, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, borderColor: Alloy.CFG.primaryColor, borderRadius: "32dp", backgroundColor: "transparent", id: "itemField", hintText: "What do you need to do?" });
 
 	$.__views.addWin.add($.__views.itemField);
 	$.__views.addBtn = Ti.UI.createButton(

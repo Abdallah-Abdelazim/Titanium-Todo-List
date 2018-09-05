@@ -6,6 +6,7 @@
 		"secondaryColor": "#FFFFFF",
 		"primaryTextColor": "#000000",
 		"secondaryTextColor": "#FFFFFF",
+		"grayColor": "#808080",
 		
 		"smallFont": "10dp",
 		"normalFont": "15dp",
