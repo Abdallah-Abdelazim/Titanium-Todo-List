@@ -1,1 +1,1 @@
-module.exports={"dependencies":{}};
+module.exports={"dependencies":{},"primaryColor":"#128c7e","primaryColorDark":"#005e52 ","primaryColorLight":"#54bdad","secondaryColor":"#FFFFFF","primaryTextColor":"#000000","secondaryTextColor":"#FFFFFF","smallFont":"10dp","normalFont":"15dp","largeFont":"20dp","superLargeFont":"25dp"};

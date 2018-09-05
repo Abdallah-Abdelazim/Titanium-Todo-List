@@ -1,13 +1,13 @@
-".container": {
-	backgroundColor: "white"
+"#todoWin": {
+	title: "Todo"
 }
 
 "#addBtn": {
 	title:"+",
-	bottom:"8dp",
-	right:"8dp",
-	color:"white",
-	backgroundColor: "black",
+	bottom:"16dp",
+	right:"16dp",
+	color: Alloy.CFG.primaryTextColor,
+	backgroundColor: Alloy.CFG.primaryColor,
 	width:"48dp",
 	height:"48dp",
 	borderRadius: "128dp"

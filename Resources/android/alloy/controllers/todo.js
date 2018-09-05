@@ -35,17 +35,17 @@ function Controller() {
 
 
 	$.__views.todoWin = Ti.UI.createWindow(
-	{ backgroundColor: "white", id: "todoWin", title: "Todo" });
+	{ backgroundColor: "white", title: "Todo", id: "todoWin" });
 
 	$.__views.todoTable = Ti.UI.createTableView(
 	{ id: "todoTable" });
 
 	$.__views.todoWin.add($.__views.todoTable);
 	$.__views.addBtn = Ti.UI.createButton(
-	{ title: "+", bottom: "8dp", right: "8dp", color: "white", backgroundColor: "black", width: "48dp", height: "48dp", borderRadius: "128dp", id: "addBtn" });
+	{ title: "+", bottom: "16dp", right: "16dp", color: Alloy.CFG.primaryTextColor, backgroundColor: Alloy.CFG.primaryColor, width: "48dp", height: "48dp", borderRadius: "128dp", id: "addBtn" });
 
 	$.__views.todoWin.add($.__views.addBtn);
-	$.__views.todo = Ti.UI.createTab(
+	addTodo ? $.addListener($.__views.addBtn, 'click', addTodo) : __defers['$.__views.addBtn!click!addTodo'] = true;$.__views.todo = Ti.UI.createTab(
 	{ window: $.__views.todoWin, title: "Todo", id: "todo" });
 
 	$.__views.todo && $.addTopLevelView($.__views.todo);
@@ -59,10 +59,10 @@ function Controller() {
 
 	var todos = require('collection');
 
-	$.addBtn.addEventListener('click', function () {
+	function addTodo(e) {
 		var controller = Alloy.createController("add");
 		controller.addWin.open();
-	});
+	}
 
 	$.todoWin.addEventListener('focus', function () {
 		todos.fetch();
@@ -92,7 +92,7 @@ function Controller() {
 
 
 
-
+	__defers['$.__views.addBtn!click!addTodo'] && $.addListener($.__views.addBtn, 'click', addTodo);
 
 
 

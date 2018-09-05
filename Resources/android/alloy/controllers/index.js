@@ -48,10 +48,6 @@ function Controller() {
 	_.extend($, $.__views);
 
 
-	function doClick(e) {
-		alert($.label.text);
-	}
-
 	$.index.open();
 
 

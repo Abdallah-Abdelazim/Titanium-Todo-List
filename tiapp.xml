@@ -18,6 +18,7 @@
   <analytics>true</analytics>
   <guid>2070800e-1b2b-4e19-9555-ef796935ed7e</guid>
   <property name="ti.ui.defaultunit">dp</property>
+  <property name="run-on-main-thread" type="bool">true</property>
   <iphone>
     <orientations device="iphone">
       <orientation>Ti.UI.PORTRAIT</orientation>
@@ -29,8 +30,10 @@
       <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
     </orientations>
   </iphone>
-  <android 
-    xmlns:android="http://schemas.android.com/apk/res/android"/>
+  <android xmlns:android="http://schemas.android.com/apk/res/android">
+  	<uses-sdk android:targetSdkVersion="26" />
+  </android>
+    
     <plugins>
       <plugin version="1.2.2">ti.alloy</plugin>
     </plugins>

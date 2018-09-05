@@ -1,9 +1,9 @@
 var todos = require('collection');
 
-$.addBtn.addEventListener('click', function() {
+function addTodo(e) {
 	var controller = Alloy.createController("add");
 	controller.addWin.open();
-});
+}
 
 $.todoWin.addEventListener('focus', function() {
 	todos.fetch();
