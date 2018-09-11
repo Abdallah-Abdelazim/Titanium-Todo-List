@@ -37,10 +37,13 @@ function Controller() {
 	$.__views.todoWin = Ti.UI.createWindow(
 	{ backgroundColor: "white", title: "Todo", id: "todoWin" });
 
-	$.__views.todoTable = Ti.UI.createTableView(
-	{ id: "todoTable" });
+	var __alloyId5 = {};var __alloyId8 = [];var __alloyId10 = { type: 'Ti.UI.View', childTemplates: function () {var __alloyId11 = [];var __alloyId12 = { type: 'Ti.UI.Label', bindId: 'item', properties: { width: Ti.UI.SIZE, height: Ti.UI.SIZE, color: Alloy.CFG.primaryTextColor, bindId: "item" } };__alloyId11.push(__alloyId12);return __alloyId11;}(), properties: { layout: "horizontal" } };__alloyId8.push(__alloyId10);var __alloyId7 = { properties: { name: "todoItemTemplate" }, childTemplates: __alloyId8 };__alloyId5["todoItemTemplate"] = __alloyId7;$.__views.todoSection = Ti.UI.createListSection(
+	{ id: "todoSection" });
 
-	$.__views.todoWin.add($.__views.todoTable);
+	var __alloyId14 = [];__alloyId14.push($.__views.todoSection);$.__views.todoListView = Ti.UI.createListView(
+	{ sections: __alloyId14, templates: __alloyId5, id: "todoListView", defaultItemTemplate: "todoItemTemplate" });
+
+	$.__views.todoWin.add($.__views.todoListView);
 	$.__views.addBtn = Ti.UI.createButton(
 	{ title: "+", bottom: "16dp", right: "16dp", color: Alloy.CFG.primaryTextColor, backgroundColor: Alloy.CFG.primaryColor, width: "48dp", height: "48dp", borderRadius: "128dp", id: "addBtn" });
 

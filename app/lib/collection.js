@@ -21,7 +21,7 @@ todos.on("fetch", function() {
 
 exports.fetch = function() {
 	todos.fetch();
-}
+};
 
 exports.add = function(_item) {
 	var todo = Alloy.createModel('Todo');
@@ -37,4 +37,4 @@ exports.add = function(_item) {
 			Ti.API.info("Item Not Added: "+JSON.stringify(e));
 		}
 	});
-}
+};

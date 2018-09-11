@@ -12,3 +12,11 @@
 ".container": {
 	backgroundColor: "white"
 }
+
+".horLayout": {
+	layout: "horizontal"
+}
+
+".verLayout": {
+	layout: "vertical"
+}
