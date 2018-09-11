@@ -1,2 +1,2 @@
-# Ti Todo List
+# Titanium Todo List
 Todo List App in Titanium Alloy
