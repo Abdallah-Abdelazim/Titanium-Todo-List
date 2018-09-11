@@ -37,22 +37,19 @@ function Controller() {
 	$.__views.todoWin = Ti.UI.createWindow(
 	{ backgroundColor: "white", title: "Todo", id: "todoWin" });
 
-	var __alloyId5 = {};var __alloyId8 = [];var __alloyId10 = { type: 'Ti.UI.View', childTemplates: function () {var __alloyId11 = [];var __alloyId12 = { type: 'Ti.UI.Label', bindId: 'item', properties: { width: Ti.UI.SIZE, height: Ti.UI.SIZE, color: Alloy.CFG.primaryTextColor, bindId: "item" } };__alloyId11.push(__alloyId12);return __alloyId11;}(), properties: { layout: "horizontal" } };__alloyId8.push(__alloyId10);var __alloyId7 = { properties: { name: "todoItemTemplate" }, childTemplates: __alloyId8 };__alloyId5["todoItemTemplate"] = __alloyId7;$.__views.todoSection = Ti.UI.createListSection(
+	$.__views.todoWin && $.addTopLevelView($.__views.todoWin);
+	var __alloyId0 = {};var __alloyId3 = [];var __alloyId4 = { type: 'Ti.UI.View', childTemplates: function () {var __alloyId5 = [];var __alloyId7 = { type: 'Ti.UI.View', childTemplates: function () {var __alloyId8 = [];var __alloyId9 = { type: 'Ti.UI.Label', bindId: 'todoItemLbl', properties: { width: "75%", height: Ti.UI.SIZE, color: Alloy.CFG.primaryTextColor, left: "8dp", right: "52dp", bindId: "todoItemLbl" } };__alloyId8.push(__alloyId9);var __alloyId10 = { type: 'Ti.UI.Button', properties: { width: "20%", right: "8dp", title: 'DONE' }, events: { click: markTodoDone } };__alloyId8.push(__alloyId10);return __alloyId8;}(), properties: { width: Titanium.UI.FILL, height: Titanium.UI.SIZE } };__alloyId5.push(__alloyId7);var __alloyId12 = { type: 'Ti.UI.View', properties: { width: Titanium.UI.FILL, height: "1dp", backgroundColor: Alloy.CFG.grayColor } };__alloyId5.push(__alloyId12);return __alloyId5;}(), properties: { layout: "vertical", width: Titanium.UI.FILL, height: Titanium.UI.SIZE } };__alloyId3.push(__alloyId4);var __alloyId2 = { properties: { name: "todoItemTemplate" }, childTemplates: __alloyId3 };__alloyId0["todoItemTemplate"] = __alloyId2;$.__views.todoSection = Ti.UI.createListSection(
 	{ id: "todoSection" });
 
 	var __alloyId14 = [];__alloyId14.push($.__views.todoSection);$.__views.todoListView = Ti.UI.createListView(
-	{ sections: __alloyId14, templates: __alloyId5, id: "todoListView", defaultItemTemplate: "todoItemTemplate" });
+	{ sections: __alloyId14, templates: __alloyId0, id: "todoListView", defaultItemTemplate: "todoItemTemplate" });
 
 	$.__views.todoWin.add($.__views.todoListView);
 	$.__views.addBtn = Ti.UI.createButton(
-	{ title: "+", bottom: "16dp", right: "16dp", color: Alloy.CFG.primaryTextColor, backgroundColor: Alloy.CFG.primaryColor, width: "48dp", height: "48dp", borderRadius: "128dp", id: "addBtn" });
+	{ title: "+", font: { fontSize: "24" }, bottom: "16dp", right: "16dp", color: "white", backgroundColor: Alloy.CFG.primaryColor, width: "48dp", height: "48dp", borderRadius: "128dp", id: "addBtn" });
 
 	$.__views.todoWin.add($.__views.addBtn);
-	addTodo ? $.addListener($.__views.addBtn, 'click', addTodo) : __defers['$.__views.addBtn!click!addTodo'] = true;$.__views.todo = Ti.UI.createTab(
-	{ window: $.__views.todoWin, title: "Todo", id: "todo" });
-
-	$.__views.todo && $.addTopLevelView($.__views.todo);
-	exports.destroy = function () {};
+	addTodo ? $.addListener($.__views.addBtn, 'click', addTodo) : __defers['$.__views.addBtn!click!addTodo'] = true;exports.destroy = function () {};
 
 
 
@@ -60,35 +57,46 @@ function Controller() {
 	_.extend($, $.__views);
 
 
-	var todos = require('collection');
+
+	var todos = Alloy.createCollection('todo');
+
+	function init() {
+		todos.fetch();
+
+		var listItems = [];
+		for (var i = 0; i < todos.length; i++) {
+			var todoModel = todos.at(i);
+
+			Ti.API.info('Model[' + i + '] = ' + JSON.stringify(todoModel));
+
+			var item = {
+				todoItemLbl: {
+					text: todoModel.get('item') } };
+
+
+
+			listItems.push(item);
+		}
+		$.todoListView.sections[0].setItems(listItems);
+	}
 
 	function addTodo(e) {
 		var controller = Alloy.createController("add");
 		controller.addWin.open();
 	}
 
+	function markTodoDone(e) {
+		var itemIndex = e.itemIndex;
+		Ti.API.info('Item index = ' + itemIndex);
+
+		var todoModel = Alloy.createModel('todo', { item_id: todos.at(itemIndex).get('item_id') });
+		todoModel.destroy();
+
+		$.todoListView.sections[0].deleteItemsAt(itemIndex, 1);
+	}
+
 	$.todoWin.addEventListener('focus', function () {
-		todos.fetch();
-	});
-
-	$.todoTable.updateContent = function (_rows) {
-		var rows = [],
-		i = 0,
-		len = _rows.length;
-
-		for (; i < len; i++) {
-			rows.push(Ti.UI.createTableViewRow(_rows[i]));
-		}
-		this.setData(rows);
-	};
-
-	$.todoTable.addEventListener('click', function (e) {
-		Ti.API.info('Title: ' + e.rowData.title);
-	});
-
-	Ti.App.addEventListener('app:update_list', function (_collection) {
-		Ti.API.info("UPDATE LIST: " + JSON.stringify(_collection.todos));
-		$.todoTable.updateContent(_collection.todos);
+		init();
 	});
 
 

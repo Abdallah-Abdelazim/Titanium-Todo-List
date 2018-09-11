@@ -14,9 +14,21 @@
 }
 
 ".horLayout": {
-	layout: "horizontal"
+	layout: "horizontal",
+	horizontalWrap: false
 }
 
 ".verLayout": {
 	layout: "vertical"
+}
+
+".horLine": {
+	width: Titanium.UI.FILL,
+	height: "1dp",
+	backgroundColor: Alloy.CFG.grayColor
+}
+
+".wrapHorizontally": {
+	width: Titanium.UI.FILL,
+	height: Titanium.UI.SIZE
 }

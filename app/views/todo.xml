@@ -1,20 +1,22 @@
 <Alloy>
-	<Tab title="Todo">
-    	<Window id="todoWin" class="container">
-    		<ListView id="todoListView" defaultItemTemplate="todoItemTemplate">
-    			<Templates>
-                <!-- Define your item templates within the Templates tags or use the
-                     Require tag to include a view that only contains an ItemTemplate -->
-	                <ItemTemplate name="todoItemTemplate">
-	                	<View class"horLayout">
-	                    	<Label bindId="item" id="item" />
+	<Window id="todoWin" class="container">
+		<ListView id="todoListView" defaultItemTemplate="todoItemTemplate">
+			<Templates>
+            	<!-- Define your item templates within the Templates tags or use the
+                	Require tag to include a view that only contains an ItemTemplate -->
+                <ItemTemplate name="todoItemTemplate">
+	                <View id="todoItem" class="verLayout wrapHorizontally">
+	                	<View class"wrapHorizontally">
+	                    	<Label bindId="todoItemLbl" id="todoItemLbl" />
+	                    	<Button id="markDone" onClick="markTodoDone">DONE</Button>
 	                	</View>
-	                </ItemTemplate>	
-	            </Templates>
-	            
-	            <ListSection id="todoSection" />
-    		</ListView>
-    	    <Button id="addBtn" onClick="addTodo" />
-    	</Window>
-    </Tab>
+                		<View class="horLine" />
+                	</View>
+                </ItemTemplate>
+            </Templates>
+            
+            <ListSection id="todoSection" />
+		</ListView>
+	    <Button id="addBtn" onClick="addTodo" />
+	</Window>
 </Alloy>

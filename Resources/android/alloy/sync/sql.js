@@ -301,7 +301,7 @@ function Migrate(Model) {
 		direction = 1;
 	}
 
-	db = Ti.Database.open(config.adapter.db_name);
+	var db = Ti.Database.open(config.adapter.db_name);
 	migrator.db = db;
 	db.execute('BEGIN;');
 

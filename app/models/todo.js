@@ -2,12 +2,14 @@ exports.definition = {
 
 	config: {
 		"columns": {
-			"item":"text",
-			"done":"integer"
+			"item_id": "integer primary key autoincrement",
+			"item":"text"
 		},
 		"adapter": {
 			"type":"sql",
-			"collection_name":"todo"
+			"collection_name":"todo",
+			"idAttribute": "item_id",
+			"db_file": "/titanium_todo.sqlite"
 		}
 	},
 
@@ -21,11 +23,6 @@ exports.definition = {
 					if (key === "item") {
 						if (value.length <= 0) {
 							return 'Error: No item!';
-						}
-					}
-					if (key === "done") {
-						if (value.length <= 0) {
-							return 'Error: No completed flag!';
 						}
 					}
 				}

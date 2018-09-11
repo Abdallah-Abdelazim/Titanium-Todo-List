@@ -1,5 +1,5 @@
 "#addWin":{
-	layout:"vertical"
+	title: "Add Item"
 }
 
 "#itemField":{
@@ -8,8 +8,11 @@
 	returnKeyType:Ti.UI.RETURNKEY_DONE,
 	borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 	borderColor: Alloy.CFG.primaryColor,
-	borderRadius: "32dp",
-	backgroundColor: "transparent"
+	backgroundColor: "transparent",
+	padding: {
+		left: 16,
+		right: 16
+	}
 }
 
 ".button":{

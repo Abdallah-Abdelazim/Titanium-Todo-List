@@ -34,12 +34,6 @@ function Controller() {
 
 
 
-	var __alloyId1 = [];$.__views.__alloyId2 = Alloy.createController('todo', { id: "__alloyId2" });
-	__alloyId1.push($.__views.__alloyId2.getViewEx({ recurse: true }));$.__views.__alloyId4 = Alloy.createController('done', { id: "__alloyId4" });
-	__alloyId1.push($.__views.__alloyId4.getViewEx({ recurse: true }));$.__views.index = Ti.UI.createTabGroup(
-	{ tabs: __alloyId1, id: "index" });
-
-	$.__views.index && $.addTopLevelView($.__views.index);
 	exports.destroy = function () {};
 
 
@@ -48,7 +42,13 @@ function Controller() {
 	_.extend($, $.__views);
 
 
-	$.index.open();
+
+	function init() {
+		var todoController = Alloy.createController('todo');
+		todoController.todoWin.open();
+	}
+
+	init();
 
 
 

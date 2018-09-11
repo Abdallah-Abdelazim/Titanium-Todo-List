@@ -35,11 +35,11 @@ function Controller() {
 
 
 	$.__views.addWin = Ti.UI.createWindow(
-	{ backgroundColor: "white", layout: "vertical", id: "addWin", title: "Add Item", modal: true });
+	{ backgroundColor: "white", layout: "vertical", title: "Add Item", id: "addWin", modal: true });
 
 	$.__views.addWin && $.addTopLevelView($.__views.addWin);
 	$.__views.itemField = Ti.UI.createTextField(
-	{ color: Alloy.CFG.primaryTextColor, hintTextColor: Alloy.CFG.grayColor, width: "90%", top: 55, returnKeyType: Ti.UI.RETURNKEY_DONE, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, borderColor: Alloy.CFG.primaryColor, borderRadius: "32dp", backgroundColor: "transparent", id: "itemField", hintText: "What do you need to do?" });
+	{ color: Alloy.CFG.primaryTextColor, hintTextColor: Alloy.CFG.grayColor, width: "90%", top: 55, returnKeyType: Ti.UI.RETURNKEY_DONE, borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED, borderColor: Alloy.CFG.primaryColor, backgroundColor: "transparent", padding: { left: 16, right: 16 }, id: "itemField", hintText: "What do you need to do?" });
 
 	$.__views.addWin.add($.__views.itemField);
 	$.__views.addBtn = Ti.UI.createButton(
@@ -58,12 +58,12 @@ function Controller() {
 	_.extend($, $.__views);
 
 
-	var todos = require('collection');
 
 	$.addBtn.addEventListener('click', function () {
 
-		var item = $.itemField.value;
-		todos.add(item);
+		var itemText = $.itemField.value;
+		var todoModel = Alloy.createModel('todo', { item: itemText });
+		todoModel.save();
 
 		$.addWin.close();
 	});

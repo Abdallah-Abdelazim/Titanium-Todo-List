@@ -7,12 +7,14 @@ exports.definition = {
 
 	config: {
 		"columns": {
-			"item": "text",
-			"done": "integer"
+			"item_id": "integer primary key autoincrement",
+			"item": "text"
 		},
 		"adapter": {
 			"type": "sql",
-			"collection_name": "todo"
+			"collection_name": "todo",
+			"idAttribute": "item_id",
+			"db_file": "/titanium_todo.sqlite"
 		}
 	},
 
@@ -24,11 +26,6 @@ exports.definition = {
 					if (key === "item") {
 						if (value.length <= 0) {
 							return 'Error: No item!';
-						}
-					}
-					if (key === "done") {
-						if (value.length <= 0) {
-							return 'Error: No completed flag!';
 						}
 					}
 				}
@@ -47,26 +44,7 @@ exports.definition = {
 
 };
 
-model = Alloy.M('todo', exports.definition, [function (migration) {
-	migration.name = 'todo';
-	migration.id = '201209160140519';
-	migration.up = function (db) {
-		db.createTable({
-			"columns": {
-				"item": "text",
-				"done": "integer"
-			},
-			"adapter": {
-				"type": "sql",
-				"collection_name": "todo"
-			}
-		});
-	};
-
-	migration.down = function (db) {
-		db.dropTable("todo");
-	};
-}]);
+model = Alloy.M('todo', exports.definition, []);
 
 collection = Alloy.C('todo', exports.definition, model);
 

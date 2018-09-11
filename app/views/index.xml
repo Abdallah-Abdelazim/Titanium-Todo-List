@@ -1,6 +1,3 @@
 <Alloy>
-	<TabGroup>
-		<Require src="todo"/>
-	    <Require src="done"/>
-	</TabGroup>
+	
 </Alloy>

@@ -2,11 +2,25 @@
 	title: "Todo"
 }
 
+"#todoItemLbl": {
+	width: "75%",
+	left: "8dp",
+	right: "52dp"
+}
+
+"#markDone": {
+	width: "20%",
+	right: "8dp"
+}
+
 "#addBtn": {
 	title:"+",
+	font: {
+		fontSize: "24"
+	},
 	bottom:"16dp",
 	right:"16dp",
-	color: Alloy.CFG.primaryTextColor,
+	color: "white",
 	backgroundColor: Alloy.CFG.primaryColor,
 	width:"48dp",
 	height:"48dp",

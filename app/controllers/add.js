@@ -1,9 +1,9 @@
-var todos = require('collection');
 
 $.addBtn.addEventListener('click', function() {
 	// add todo item
-	var item = $.itemField.value;
-	todos.add(item);
+	var itemText = $.itemField.value;
+	var todoModel = Alloy.createModel('todo', {item: itemText});
+	todoModel.save();
 
 	$.addWin.close();
 });
